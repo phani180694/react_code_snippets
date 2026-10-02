@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Debounce Search</title>
+</head>
+
+<body>
+  <h2>Search Users</h2>
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search..."
+  />
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    
+    // Debounce function to limit the rate of API calls
+    let timer;
+    searchInput.addEventListener("input", function (event) {
+      // Cancel previous timer
+      clearTimeout(timer);
+      // Start a new timer
+      timer = setTimeout(function () {
+        const searchText = event.target.value;
+        console.log("API call for:", searchText);
+      }, 500);
+    });
+
+//without debounce how api call will be made for every input change
+//   searchInput.addEventListener("input", function (event) {
+//         const searchText = event.target.value;
+//         console.log("API call for:", searchText);
+//     });
+  </script>
+
+</body>
+</html>
